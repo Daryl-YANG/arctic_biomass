@@ -55,8 +55,8 @@ data.split <- sample.split(data.org, SplitRatio = 0.7)
 # get training and validation data
 data.train <- subset(data.org, data.split == "TRUE") 
 data.test <- subset(data.org, data.split == "FALSE") 
-data.train <- data.org
-data.test <- data.org
+#data.train <- data.org
+#data.test <- data.org
 # extract data for random forest regression
 rf.data.train <- data.train[, c(15:20)]
 # build a random forest model 
