@@ -45,7 +45,7 @@ data.dir <- list.files(source.dir, pattern = 'biomass_database_v2.csv',
                        full.names = TRUE)
 data.org <- read.csv(data.dir)
 str(data.org)
-data.org$ABG_kg_m2[data.org$HAG_plotmax > 6] <- NA
+data.org$ABG_kg_m2[data.org$HAG_plotmean > 6] <- NA
 data.org <- na.omit(data.org)
 #*****************************************************************************************#
 
@@ -55,8 +55,8 @@ data.split <- sample.split(data.org, SplitRatio = 0.7)
 # get training and validation data
 data.train <- subset(data.org, data.split == "TRUE") 
 data.test <- subset(data.org, data.split == "FALSE") 
-#data.train <- data.org
-#data.test <- data.org
+data.train <- data.org
+data.test <- data.org
 # extract data for random forest regression
 rf.data.train <- data.train[, c(15:20)]
 # build a random forest model 
@@ -93,8 +93,8 @@ ggplot(data = plt.data, aes(x = truth, y = predicted)) +
   geom_point(size = 2, shape = 1) + 
   geom_smooth(method = 'lm', formula = formula, col = 'black') +
   geom_errorbar(aes(ymin = predicted-unc, ymax = predicted+unc)) + 
-  ylim(c(0, 4)) + xlim(c(0, 4)) +
-  labs(x = 'Ground Biomass (g/m2)', y = 'Predicted Biomass (g/m2)') +
+  ylim(c(0, 5)) + xlim(c(0, 5)) +
+  labs(x = 'Ground Biomass (kg/m2)', y = 'Predicted Biomass (kg/m2)') +
   theme(legend.position = 'none') +
   theme(axis.text = element_text(size=12), axis.title=element_text(size=13)) +
   stat_poly_eq(aes(label = paste(..eq.label.., sep = "~~~")), 
@@ -105,7 +105,7 @@ ggplot(data = plt.data, aes(x = truth, y = predicted)) +
   stat_poly_eq(aes(label = paste(..rr.label.., sep = "~~~")), 
                label.x.npc = 0.65, label.y.npc = 0.25,
                formula = formula, parse = TRUE, size = 4, hjust = 0) +
-  annotate('text', x= 2.65, y = 0.45, label = 'RMSE = 0.32', size = 4, hjust = 0) +
+  annotate('text', x= 3.33, y = 0.5, label = 'RMSE = 0.5', size = 4, hjust = 0) +
   theme(axis.line = element_line(colour = "black"),
         panel.background = element_blank(),
         panel.grid.major = element_blank(),
