@@ -28,7 +28,7 @@ invisible(lapply(list.of.packages, library, character.only = TRUE))
 
 #************************************ user parameters ************************************#
 # define an output directory to store outputs
-out.dir <- "/Volumes/Utility_SSD/biomass/panarctic_uas/analysis/heterogeneity/polygon"
+out.dir <- "***"
 # create output directory if not exist
 if (! file.exists(out.dir)) dir.create(out.dir,recursive=TRUE)
 # creat an temporary to store files temporarily generated during the course of processing
@@ -44,7 +44,7 @@ reso <- 1 # m
 
 #*************************************** load data ***************************************#
 # define directory to biomass training files
-biomss.database.path <- "/Volumes/Utility_SSD/biomass/panarctic_uas/analysis/biomass_model/model_input/"
+biomss.database.path <- "***"
 biomass.dir <- list.files(biomss.database.path, pattern = 'biomass_database_final.csv',
                        full.names = TRUE)
 data.org <- read.csv(biomass.dir)
@@ -53,7 +53,7 @@ data.org$ABG_kg_m2[data.org$HAG_plotmean > 6] <- NA
 data.org <- na.omit(data.org)
 
 # load in canopy height model map
-chm.path <- "/Volumes/Utility_SSD/biomass/panarctic_uas/analysis/heterogeneity/polygon"
+chm.path <- "***"
 chm.dir <- list.files(chm.path, pattern = 'NGEEArctic_2019_DJI_Kougarok_Mile80_Flight1_CHM',
                       full.names = TRUE, recursive = TRUE)
 chm.rst <- terra::rast(chm.dir)/100
