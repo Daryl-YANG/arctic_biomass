@@ -63,7 +63,6 @@ chm.rst <- terra::rast(chm.dir)/100
 #************************************* biomass model *************************************#
 ### split data into training and validation
 data.train <- data.org
-data.test <- data.org
 # extract data for random forest regression
 rf.data.train <- data.train[, c(15:20)]
 # build a random forest model 
