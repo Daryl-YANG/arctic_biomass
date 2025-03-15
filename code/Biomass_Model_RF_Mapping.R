@@ -1,11 +1,9 @@
 ###########################################################################################
 #
-#  this script extracts spectral reflectance (and quality control layer if preferred) from
-#  original modis brdf-corrected reflectance hdf files downloaded from DACC, convert hdf 
-#  to tif and merge spectral bands. the output is a single raster file for each hdf file
-#  that contains all desired spectral bands and quality control layers
+#  this script construct random forest based biomass model and apply to canopy hegiht
+#  maps to produce plant aboveground biomass maps
 #
-#    --- Last updated:  2021.06.22 By Daryl Yang <dediyang@bnl.gov>
+#    --- Last updated:  2025.03.15 By Daryl Yang <yangd@ornl.gov>
 ###########################################################################################
 
 #******************** close all devices and delete all variables *************************#
